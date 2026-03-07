@@ -1,0 +1,54 @@
+package com.example.utils;
+
+import io.qameta.allure.Attachment;
+import io.qameta.allure.listener.TestLifecycleListener;
+import io.qameta.allure.model.TestResult;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+public class AllureListener implements ITestListener {
+
+    @Override
+    public void onTestStart(ITestResult result) {
+        System.out.println("Starting test: " + result.getName());
+    }
+
+    @Override
+    public void onTestSuccess(ITestResult result) {
+        System.out.println("Test passed: " + result.getName());
+        captureScreenshot("Success Screenshot");
+    }
+
+    @Override
+    public void onTestFailure(ITestResult result) {
+        System.out.println("Test failed: " + result.getName());
+        captureScreenshot("Failure Screenshot");
+        saveTextLog(result.getThrowable().getMessage());
+    }
+
+    @Override
+    public void onTestSkipped(ITestResult result) {
+        System.out.println("Test skipped: " + result.getName());
+    }
+
+    @Attachment(value = "{attachmentName}", type = "image/png")
+    public byte[] captureScreenshot(String attachmentName) {
+        try {
+            if (BaseClass.driver != null) {
+                return ((TakesScreenshot) BaseClass.driver).getScreenshotAs(OutputType.BYTES);
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to capture screenshot: " + e.getMessage());
+        }
+        return new byte[0];
+    }
+
+    @Attachment(value = "Error Log", type = "text/plain")
+    public String saveTextLog(String message) {
+        return message;
+    }
+}
