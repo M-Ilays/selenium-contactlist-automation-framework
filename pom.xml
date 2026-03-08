@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>selenium-automation</artifactId>
+    <artifactId>contactlist-app-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Selenium Automation Framework</name>
-    <description>Hybrid POM and Data-Driven Framework for Web Automation</description>
+    <name>Contact List App Automation</name>
+    <description>Hybrid POM and Data-Driven Framework for Contact List App</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
