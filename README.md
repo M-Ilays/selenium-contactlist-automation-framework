@@ -1,20 +1,11 @@
-# Selenium Automation Framework
+# Selenium Contact List Automation Framework
 
-
----
-
----
-
----
-
-
-
-This is a hybrid framework combining Page Object Model (POM) and Data-Driven testing for automating the Contact List App using Selenium, Java, TestNG, and Maven.
+Hybrid Selenium automation framework using Java, TestNG, Maven, and Allure Reports for automating the Contact List App.
 
 ## Project Structure
 
 - `src/main/java/com/example/pages/` - Page Object classes
-- `src/main/java/com/example/utils/` - Utility classes (BaseClass, ExcelUtils)
+- `src/main/java/com/example/utils/` - Utility classes (BaseClass, ExcelUtils, AllureManager)
 - `src/test/java/com/example/tests/` - Test classes
 - `src/test/resources/` - Configuration and test data files
 
@@ -31,6 +22,7 @@ This is a hybrid framework combining Page Object Model (POM) and Data-Driven tes
 
 - Run all tests: `mvn test`
 - Run specific test: `mvn test -Dtest=LoginTest`
+- Run with Allure reports: `run-tests-with-allure.bat`
 
 ## Configuration
 
@@ -42,10 +34,10 @@ Edit `src/test/resources/config.properties` to change browser, timeouts, etc.
 - TestNG 7.8.0
 - Apache POI 5.2.4 (for Excel)
 - WebDriverManager 5.5.3
-- ExtentReports 5.0.9
+- Allure TestNG 2.24.0
 
 ## Notes
 
 - WebDriverManager automatically manages browser drivers.
 - The framework supports Chrome, Firefox, and Edge browsers.
-- ExtentReports can be integrated for detailed test reports.
+- Allure Reports provide detailed test execution reports with screenshots.
