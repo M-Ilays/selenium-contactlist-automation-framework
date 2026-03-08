@@ -12,71 +12,42 @@ buildNumber.properties
 
 # Java
 *.class
+*.log
+*.ctxt
+.mtj.tmp/
 *.jar
 *.war
-*.ear
 *.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
 hs_err_pid*
-replay_pid*
 
-# IDE - IntelliJ IDEA
+# IDE
 .idea/
 *.iml
 *.iws
 *.ipr
-out/
-
-# IDE - Eclipse
+.vscode/
+.settings/
 .classpath
 .project
-.settings/
-bin/
 
-# IDE - VS Code
-.vscode/
-*.code-workspace
-
-# NetBeans
-nbproject/
-nbbuild/
-dist/
-nbdist/
-.nb-gradle/
-
-# Logs
-*.log
-logs/
-
-# Test Reports
+# Test Results
 test-output/
-allure-results/
 screenshots/*.png
 !screenshots/.gitkeep
 
 # Allure
 .allure/
-allure-report/
+allure-results/
 
-# OS Files
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Selenium
-*.mp4
-*.avi
-
-# Temporary files
-*.tmp
-*.bak
-*.swp
 *~
 
-# Credentials (if any)
-**/config.properties
-!src/main/resources/config.properties
-!src/test/resources/config.properties
-
-# Test Data with sensitive info (optional - adjust as needed)
-# **/testdata/*.xlsx
-# **/testdata/*.xls
+# Logs
+logs/
+*.log

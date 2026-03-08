@@ -120,12 +120,6 @@ public class AddContactTest extends BaseClass {
                                String stateProvince, String postalCode, String country,
                                String expectedResult) throws Exception {
         
-        System.out.println("\n============================================================");
-        System.out.println("Testing Add Contact: " + firstName + " " + lastName);
-        System.out.println("Email: " + email + ", Phone: " + phone);
-        System.out.println("Expected Result: " + expectedResult);
-        System.out.println("============================================================\n");
-        
         // Perform add contact
         addContactPage.addContact(firstName, lastName, birthdate, email, phone, 
                                  street1, street2, city, stateProvince, postalCode, country);
@@ -173,19 +167,6 @@ public class AddContactTest extends BaseClass {
                     Assert.assertTrue(birthdate.matches("\\d{4}-\\d{2}-\\d{2}"), 
                             "Birthdate should be in YYYY-MM-DD format. Got: " + birthdate);
                 }
-                
-                // Display validation popup with all passed validations
-                String[] validations = {
-                    "URL contains 'contactList' - PASSED",
-                    "Left addContact page successfully - PASSED",
-                    "First Name: '" + firstName + "' - PASSED",
-                    "Last Name: '" + lastName + "' - PASSED",
-                    "Email: '" + email + "' - PASSED",
-                    "Phone: '" + phone + "' - PASSED",
-                    "Contact added to list successfully - PASSED"
-                };
-                addContactPage.displayValidationPopup("ADD CONTACT VALIDATION SUCCESSFUL!", validations, true);
-                Thread.sleep(5500);
                 
                 // Display custom success notification
                 addContactPage.displaySuccessNotification(firstName, lastName);
@@ -255,18 +236,6 @@ public class AddContactTest extends BaseClass {
                 System.out.println("Validation: Invalid birthdate format detected");
                 Assert.assertTrue(true, "Birthdate validation working correctly");
             }
-            
-            // Display validation popup with all passed negative test validations
-            String[] validations = {
-                "Stayed on addContact page - PASSED",
-                "Did not access contactList - PASSED",
-                "Required field validation - PASSED",
-                "Data format validation - PASSED",
-                "Add contact blocked as expected - PASSED",
-                errorMsg.isEmpty() ? "Validation working correctly" : "Error: " + errorMsg
-            };
-            addContactPage.displayValidationPopup("NEGATIVE TEST VALIDATION PASSED!", validations, false);
-            Thread.sleep(5500);
             
             // Display error notification
             addContactPage.displayErrorNotification(errorMsg.isEmpty() ? "Invalid contact data" : errorMsg);

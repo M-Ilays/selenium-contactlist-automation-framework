@@ -1,4 +1,4 @@
-# Contact List App Automation
+# Selenium Automation Framework
 
 
 ---

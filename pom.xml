@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>contactlist-app-automation</artifactId>
+    <artifactId>selenium-automation</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Contact List App Automation</name>
-    <description>Hybrid POM and Data-Driven Framework for Contact List App</description>
+    <name>Selenium Automation Framework</name>
+    <description>Hybrid POM and Data-Driven Framework for Web Automation</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,8 +19,8 @@
         <selenium.version>4.15.0</selenium.version>
         <testng.version>7.8.0</testng.version>
         <poi.version>5.2.4</poi.version>
-        <allure.version>2.25.0</allure.version>
-        <aspectj.version>1.9.21</aspectj.version>
+        <allure.version>2.24.0</allure.version>
+        <aspectj.version>1.9.20</aspectj.version>
     </properties>
 
     <dependencies>
@@ -73,25 +73,18 @@
             <version>5.0.9</version>
         </dependency>
 
-        <!-- Allure TestNG Integration -->
+        <!-- Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
         </dependency>
 
-        <!-- SLF4J API (required by Allure) -->
+        <!-- Allure Java Commons -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.9</version>
-        </dependency>
-
-        <!-- SLF4J Simple Implementation -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>2.0.9</version>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
         </dependency>
     </dependencies>
 
@@ -122,13 +115,9 @@
                     <useFile>false</useFile>
                     <redirectTestOutputToFile>false</redirectTestOutputToFile>
                     <printSummary>true</printSummary>
-                    <!-- AspectJ Weaver for Allure -->
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-                    </systemPropertyVariables>
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -138,16 +127,12 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
-            <!-- Allure Maven Plugin -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
                 <version>2.12.0</version>
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                    <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
                 </configuration>
             </plugin>
         </plugins>

@@ -126,12 +126,6 @@ public class UpdateContactTest extends BaseClass {
                                   String city, String stateProvince, String postalCode, 
                                   String country, String expectedResult) throws InterruptedException {
         
-        System.out.println("\n============================================================");
-        System.out.println("Testing Update Contact: " + firstName + " " + lastName);
-        System.out.println("Email: " + email + ", Phone: " + phone);
-        System.out.println("Expected Result: " + expectedResult);
-        System.out.println("============================================================\n");
-        
         try {
             // Click on the first contact in the list to edit
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("tr.contactTableBodyRow")));
@@ -249,11 +243,6 @@ public class UpdateContactTest extends BaseClass {
                         allPassed = false;
                     }
                     
-                    // Display validation popup
-                    updateContactPage.displayValidationPopup("UPDATE CONTACT - VALIDATION RESULTS", 
-                                                            validations.toArray(new String[0]), allPassed);
-                    Thread.sleep(5000);
-                    
                     if (allPassed) {
                         updateContactPage.displaySuccessNotification("Contact Updated Successfully!");
                         System.out.println("\n============================================================");
@@ -284,9 +273,6 @@ public class UpdateContactTest extends BaseClass {
                     
                 } catch (Exception e) {
                     validations.add("✗ Exception occurred: " + e.getMessage() + " - FAILED");
-                    updateContactPage.displayValidationPopup("UPDATE CONTACT - VALIDATION RESULTS", 
-                                                            validations.toArray(new String[0]), false);
-                    Thread.sleep(5000);
                     
                     System.out.println("\n============================================================");
                     System.out.println("        ✗ UPDATE CONTACT FAILED - BUT EXPECTED TO PASS!");
@@ -325,11 +311,6 @@ public class UpdateContactTest extends BaseClass {
                 } catch (Exception e) {
                     validations.add("✓ No error element found (may show validation on fields) - PASSED");
                 }
-                
-                // Display validation popup
-                updateContactPage.displayValidationPopup("UPDATE CONTACT - NEGATIVE TEST RESULTS", 
-                                                        validations.toArray(new String[0]), true);
-                Thread.sleep(5000);
                 
                 updateContactPage.displayErrorNotification("Update Failed As Expected!");
                 

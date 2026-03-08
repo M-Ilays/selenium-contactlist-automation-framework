@@ -113,11 +113,6 @@ public class DeleteContactTest extends BaseClass {
     public void testDeleteContact(String firstName, String lastName, String expectedResult) {
         String fullName = (firstName + " " + lastName).trim();
         
-        System.out.println("\n============================================================");
-        System.out.println("Testing Delete Contact: " + fullName);
-        System.out.println("Expected Result: " + expectedResult);
-        System.out.println("============================================================\n");
-        
         List<String> validations = new ArrayList<>();
         boolean testPassed = false;
         String currentUrl = "";
@@ -174,10 +169,6 @@ public class DeleteContactTest extends BaseClass {
                     System.out.println("All Assertions: PASSED ✓");
                     System.out.println("============================================================\n");
                     
-                    String[] validationArray = validations.toArray(new String[0]);
-                    deleteContactPage.displayValidationPopup("Delete Contact - Validation Results", validationArray, true);
-                    Thread.sleep(5000);
-                    
                     deleteContactPage.displaySuccessNotification(fullName);
                     Thread.sleep(3000);
                     
@@ -192,10 +183,6 @@ public class DeleteContactTest extends BaseClass {
                     System.out.println("Current URL: " + currentUrl);
                     System.out.println("Test Status: FAILED ✗");
                     System.out.println("============================================================\n");
-                    
-                    String[] validationArray = validations.toArray(new String[0]);
-                    deleteContactPage.displayValidationPopup("Delete Contact - Unexpected Failure", validationArray, false);
-                    Thread.sleep(5000);
                     
                     takeScreenshot("DeleteContactUnexpectedFailure_" + fullName.replace(" ", "_"));
                     
@@ -219,10 +206,6 @@ public class DeleteContactTest extends BaseClass {
                 System.out.println("All Assertions: PASSED ✓");
                 System.out.println("============================================================\n");
                 
-                String[] validationArray = validations.toArray(new String[0]);
-                deleteContactPage.displayValidationPopup("Delete Contact - Negative Test Results", validationArray, false);
-                Thread.sleep(5000);
-                
                 takeScreenshot("DeleteContactNegativeTest_" + fullName.replace(" ", "_"));
                 
                 // Navigate back to contact list for next test
@@ -241,8 +224,6 @@ public class DeleteContactTest extends BaseClass {
             System.out.println("============================================================\n");
             
             validations.add("Exception occurred: " + e.getMessage());
-            String[] validationArray = validations.toArray(new String[0]);
-            deleteContactPage.displayValidationPopup("Delete Contact - Test Error", validationArray, false);
             
             try {
                 Thread.sleep(5000);

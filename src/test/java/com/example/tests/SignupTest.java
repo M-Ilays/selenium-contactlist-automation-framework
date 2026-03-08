@@ -110,12 +110,6 @@ public class SignupTest extends BaseClass {
             System.out.println("Generated unique email for new user: " + email);
         }
         
-        System.out.println("\n============================================================");
-        System.out.println("Testing Signup: " + firstName + " " + lastName);
-        System.out.println("Email: " + email);
-        System.out.println("Expected Result: " + expectedResult);
-        System.out.println("============================================================\n");
-        
         // Perform signup
         signupPage.signup(firstName, lastName, email, password);
         
@@ -159,19 +153,6 @@ public class SignupTest extends BaseClass {
                 Assert.assertFalse(password.isEmpty(), 
                     "Password should not be empty for successful signup");
                 
-                // Display validation popup with all passed validations
-                String[] validations = {
-                    "URL contains 'contactList' or 'contact' - PASSED",
-                    "Left signup page successfully - PASSED",
-                    "First Name: '" + firstName.trim() + "' - PASSED",
-                    "Last Name: '" + lastName.trim() + "' - PASSED",
-                    "Email format valid: '" + email + "' - PASSED",
-                    "Password validated - PASSED",
-                    "Page Title: " + pageTitle + " - PASSED"
-                };
-                signupPage.displayValidationPopup("SIGNUP VALIDATION SUCCESSFUL!", validations, true);
-                Thread.sleep(5500); // Wait for popup to display
-                
                 System.out.println("\n============================================================");
                 System.out.println("        ✓ SIGNUP DONE SUCCESSFULLY!");
                 System.out.println("============================================================");
@@ -207,17 +188,6 @@ public class SignupTest extends BaseClass {
                     System.out.println("Current URL: " + currentUrl);
                     System.out.println("Note: If this is an existing user, set ExpectedResult to 'Fail'");
                     System.out.println("============================================================\n");
-                    
-                    // Display validation popup showing the failure
-                    String[] validations = {
-                        "Stayed on signup page - User may already exist",
-                        "Error message: " + errorMsg,
-                        "Email: " + email + " - May be registered",
-                        "Registration blocked as expected for existing user",
-                        "NOTE: Set ExpectedResult to 'Fail' for this test case"
-                    };
-                    signupPage.displayValidationPopup("EXISTING USER DETECTED!", validations, false);
-                    Thread.sleep(5500); // Wait for popup
                     
                     // Display error notification
                     signupPage.displayErrorNotification(errorMsg.isEmpty() ? "Signup Failed - Possible Existing User" : errorMsg);
@@ -264,18 +234,6 @@ public class SignupTest extends BaseClass {
                     System.out.println("Validation: Short password detected");
                     Assert.assertTrue(true, "Password validation working correctly");
                 }
-                
-                // Display validation popup with all passed negative test validations
-                String[] validations = {
-                    "Stayed on signup page - PASSED",
-                    "Did not access contactList - PASSED",
-                    "Error message presence validated - PASSED",
-                    "Email validation working - PASSED",
-                    "Password validation working - PASSED",
-                    "Error: " + errorMsg
-                };
-                signupPage.displayValidationPopup("NEGATIVE TEST VALIDATION PASSED!", validations, false);
-                Thread.sleep(5500); // Wait for popup to display
                 
                 System.out.println("\n============================================================");
                 System.out.println("        ✓ SIGNUP FAILED AS EXPECTED!");

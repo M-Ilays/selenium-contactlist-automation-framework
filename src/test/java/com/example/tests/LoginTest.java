@@ -123,11 +123,6 @@ public class LoginTest extends BaseClass {
         Allure.parameter("Password", "****");
         Allure.parameter("Expected Result", expectedResult);
         
-        System.out.println("\n" + "=".repeat(60));
-        System.out.println("Testing Login: " + email);
-        System.out.println("Expected Result: " + expectedResult);
-        System.out.println("=".repeat(60));
-        
         Allure.step("Enter credentials and submit login", () -> {
             loginPage.login(email, password);
         });
@@ -179,17 +174,6 @@ public class LoginTest extends BaseClass {
             Allure.step("Verify page title is loaded: " + pageTitle, () -> {
                 Assert.assertNotNull(pageTitle, "Page title should not be null after login");
             });
-            
-            // Display validation popup with all passed validations
-            String[] validations = {
-                "URL contains 'contactList' - PASSED",
-                "URL no longer contains 'login' - PASSED",
-                "Login verification successful - PASSED",
-                "Page title loaded: " + pageTitle + " - PASSED",
-                "User authenticated successfully"
-            };
-            loginPage.displayValidationPopup("LOGIN VALIDATION SUCCESSFUL!", validations, true);
-            Thread.sleep(5500); // Wait for popup to display
             
             // Display custom success notification on the browser screen
             loginPage.displaySuccessNotification("LOGIN DONE SUCCESSFULLY!");
@@ -262,17 +246,6 @@ public class LoginTest extends BaseClass {
             Assert.assertFalse(loginPage.isLoginSuccessful(), 
                     "Login should not be successful with invalid credentials");
         });
-        
-        // Display validation popup with all passed validations
-        String[] validations = {
-            "Stayed on login page - PASSED",
-            "Did not access contactList - PASSED",
-            "Error message displayed: " + errorMsg + " - PASSED",
-            "Error message contains authentication failure keywords - PASSED",
-            "Login verification failed as expected - PASSED"
-        };
-        loginPage.displayValidationPopup("NEGATIVE TEST VALIDATION PASSED!", validations, false);
-        Thread.sleep(5500); // Wait for popup to display
         
         // Display custom error notification on screen
         loginPage.displayErrorNotification("LOGIN FAILED - INVALID CREDENTIALS!");
